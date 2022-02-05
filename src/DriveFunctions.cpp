@@ -10,8 +10,10 @@ using namespace vex;
 #ifdef CHASSIS_4_MOTOR_INLINE
   motor FrontLeft = motor(FrontLeftPort, GEAR_SET, false);
   motor BackLeft = motor(BackLeftPort, GEAR_SET, false);
+  motor MidLeft = motor(MidLeftPort, GEAR_SET, false);
   motor FrontRight = motor(FrontRightPort, GEAR_SET, true);
   motor BackRight = motor(BackRightPort, GEAR_SET, true);
+  motor MidRight = motor(MidRightPort, GEAR_SET, true);
 
 #elif defined(CHASSIS_2_MOTOR_INLINE)
   motor DriveLeft = motor(DriveLeftPort, GEAR_SET, false);
@@ -42,12 +44,16 @@ void userDrive(void)
   #elif defined CHASSIS_4_MOTOR_INLINE
     BackRight.setBrake(brakeType::coast);
     FrontRight.setBrake(brakeType::coast);
+    MidRight.setBrake(brakeType::coast);
     BackLeft.setBrake(brakeType::coast);
     FrontLeft.setBrake(brakeType::coast);
+    MidLeft.setBrake(brakeType::coast);
 
     BackRight.spin(directionType::fwd, (verticalAxis - (horizontalAxis)), velocityUnits::pct);
     BackLeft.spin(directionType::fwd, (verticalAxis + (horizontalAxis)), velocityUnits::pct);
+    MidLeft.spin(directionType::fwd, (verticalAxis + (horizontalAxis)), velocityUnits::pct);
     FrontRight.spin(directionType::fwd, (verticalAxis - (horizontalAxis)), velocityUnits::pct);
+     MidRight.spin(directionType::fwd, (verticalAxis - (horizontalAxis)), velocityUnits::pct);
     FrontLeft.spin(directionType::fwd, (verticalAxis + (horizontalAxis)), velocityUnits::pct);
   #endif
 
