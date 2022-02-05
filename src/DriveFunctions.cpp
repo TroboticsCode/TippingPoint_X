@@ -29,8 +29,8 @@ using namespace vex;
 void userDrive(void)
 {
 #ifdef ARCADE_CONTROL
-  int32_t horizontalAxis = Controller1.HORIZONTALAXIS.value()/2;
-  int32_t verticalAxis = Controller1.VERTICALAXIS.value()/2;
+  int32_t horizontalAxis = Controller1.HORIZONTALAXIS.value()/1;
+  int32_t verticalAxis = Controller1.VERTICALAXIS.value()/1;
   
   #ifdef CHASSIS_2_MOTOR_INLINE
     DriveRight.setBrake(brakeType::coast);
@@ -293,12 +293,12 @@ void moveRotate(int16_t degrees, int velocity, uint32_t timeOut)
   #ifdef CHASSIS_4_MOTOR_INLINE
     FrontLeft.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
     BackLeft.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
-    FrontRight.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
-    BackRight.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+    FrontRight.rotateFor(-1*rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+    BackRight.rotateFor(-1*rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
 
   #elif defined CHASSIS_2_MOTOR_INLINE
-    DriveRight.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
-    DriveLeft.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+    DriveRight.rotateFor(-1*rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+    DriveLeft.rotateFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
   #endif
 #endif
 }
