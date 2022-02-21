@@ -77,18 +77,22 @@ void autonomous(void)
 
 void usercontrol(void) { 
   //add local user control variables here:
-  tester.setVelocity(100, pct);
+  arm.setVelocity(100, pct);
 
   //User control code here, inside the loop:
   //remove existing demo code and replace with you own! Then remove this comment
   while (1) {
-    if(Controller1.ButtonA.pressing())
+    if(Controller1.ButtonR1.pressing())
     {
-      tester.spin(directionType::fwd, 100, velocityUnits::pct);
+      arm.spin(directionType::fwd, 100, velocityUnits::pct);
+    }
+    else if (Controller1.ButtonR2.pressing())
+    {
+      arm.spin(directionType::rev, 100, velocityUnits::pct);
     }
     else
     {
-      tester.stop(brakeType::coast);
+      arm.stop(brakeType::hold);
     }
     //leave the drive code here, it should work if you set up 
     // DriveFunctionsConfig.h properly
