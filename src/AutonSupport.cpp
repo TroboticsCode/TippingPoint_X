@@ -36,7 +36,7 @@ void cycle_autons(void)
     else if (state == AutonR)
     {
          state =   AutonB;
-         strcpy(state_name, "Auton_2");
+         strcpy(state_name, "LOLZ");
     }
     
     else if (state == AutonB)

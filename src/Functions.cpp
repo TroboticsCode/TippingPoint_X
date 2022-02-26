@@ -12,3 +12,10 @@ void testPID()
   //moveStop();
   wait(20, msec); // Sleep the task for a short amount of time t
 }
+
+void moveArm(directionType dir, uint16_t time, uint8_t velo)
+{
+  arm.setVelocity(velo, percent);
+  
+  arm.spinFor(dir, time, msec);
+}

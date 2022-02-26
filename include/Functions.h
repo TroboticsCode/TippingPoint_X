@@ -9,5 +9,7 @@
 //lift, claw, etc
 //drive function prototypes can go here but they should be in the DriveFunctions.h file
 void testPID(void);
+void moveArm(directionType dir, uint16_t time, uint8_t velo);
+
 
 #endif
